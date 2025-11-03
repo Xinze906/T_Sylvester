@@ -55,7 +55,7 @@ X_approx = ZZ * DD * YY';
 % res for T-Sylvester
 res_2_2 = norm(A * X_approx + X_approx' * B - C); 
 % res for the form we solved
-res_2_3 = norm((B' \ A) * X_approx - X_approx' * (A' \ B) - U*V); 
+res_2_3 = norm((B' \ A) * X_approx - X_approx * (A' \ B) - U*V); 
 % res for another form
 res_2_4 = norm(A * X_approx * A' - B' * X_approx * B - B' * U*V);
 
