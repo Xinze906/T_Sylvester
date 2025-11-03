@@ -3,17 +3,18 @@
 % and compare its performance with fADI
 
 %% 
-% initialize matrix A, B
+% initialize matrix A, B as normal matrices
 n = 100;
 a = 1; b = 4;  % interval for eigs of A is [a, b]
+[Q, ~] = qr(rand(n,n));
 Aeigs = (b-a)*rand(n,1) + a; 
-A = diag(Aeigs);
+A = Q * diag(Aeigs) * Q';
 B = -A; 
 Beigs = diag(B);% B is reflection of A across imaginary axis
 
-% initialize right-hand-side matrix C = GF' of rank rank_C
-rank_C = 3;
-G = rand(n,rank_C); F = rand(n,rank_C); 
+% initialize right-hand-side matrix C = GF' of rank rnk_C
+rnk_C = 3;
+G = rand(n,rnk_C); F = rand(n,rnk_C); 
 C = G*F';
 
 %%
